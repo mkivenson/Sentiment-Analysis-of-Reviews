@@ -1,0 +1,5 @@
+
+*.gz
+videogames.json
+reviews.csv
+output.strict
