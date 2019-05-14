@@ -1,16 +1,23 @@
 ---
-title: "Project 4"
+title: "Sentiment Analysis of Amazon Reviews"
 author: "Mary Anna Kivenson"
 date: "4/14/2019"
 output:
   html_document:
     highlight: pygments
     theme: united
+    toc: true
+    toc_float: true
+    code_folding: show
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+## Import Data
+
+This project uses Amazon product reviews spanning May 1996 and July 2014 to determine whether text is positive or negative. We look specifically at video game reviews. Since the json code for video game reviews is not in strict json, we use python to convert to a pandas dataframe and then export that dataframe to csv.
 
 ```{r libraries, message=FALSE, warning=FALSE}
 library(DT)
@@ -27,10 +34,6 @@ library(wordcloud)
 library(reticulate)
 library(crfsuite)
 ```
-
-## Import Data
-
-This project uses Amazon product reviews spanning May 1996 and July 2014 to determine whether text is positive or negative. We look specifically at video game reviews. Since the json code for video game reviews is not in strict json, we use python to convert to a pandas dataframe and then export that dataframe to csv.
 
 ```{python eval=FALSE, include=TRUE}
 import pandas as pd
@@ -53,7 +56,6 @@ df = getDF('reviews_Video_Games_5.json.gz')
 
 df.to_csv(r'reviews.csv')
 ```
-
 
 Next, we read that csv file into an R dataframe. 
 
